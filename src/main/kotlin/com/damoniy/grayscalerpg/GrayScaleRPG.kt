@@ -1,6 +1,8 @@
 package com.damoniy.grayscalerpg
 
 import com.damoniy.grayscalerpg.api.GeneralRegister
+import com.damoniy.grayscalerpg.api.data.client.GrayscaleBlockModelProvider
+import com.damoniy.grayscalerpg.api.data.client.GrayscaleBlockStateProvider
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraftforge.event.RegistryEvent
@@ -8,6 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent
 import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -48,6 +51,17 @@ object GrayScaleRPG {
         @SubscribeEvent
         fun registerItems(event: RegistryEvent.Register<Item>) {
             GeneralRegister.registerItems(event.registry)
+        }
+    }
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+    object DataGenerators {
+
+        @SubscribeEvent
+        fun gatherData(event: GatherDataEvent) {
+            val eventGenerator = event.generator
+            eventGenerator.addProvider(GrayscaleBlockStateProvider(eventGenerator, event.existingFileHelper))
+            eventGenerator.addProvider(GrayscaleBlockModelProvider(eventGenerator, event.existingFileHelper))
         }
     }
 }

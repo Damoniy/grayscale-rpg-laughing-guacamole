@@ -7,15 +7,18 @@ import net.minecraft.block.Block
 import net.minecraft.util.ResourceLocation
 
 abstract class GrayBlock(
-    blockType: BlockType, val blockName: String): Block(blockType.properties) {
+    blockType: BlockType,
+    val textureName: String): Block(blockType.properties) {
     private val blockItemFactory = BlockItemFactory()
 
+    val blockName: String get() = "block_$textureName"
+
     init{
-        this.registryName = ResourceLocation(GrayScaleRPG.ID, "block_$blockName")
+        this.registryName = ResourceLocation(GrayScaleRPG.ID, "$blockName")
         GrayBlocks.register(getModdedBlock())
     }
 
-    private fun getModdedBlock(): GrayBlock {
+    fun getModdedBlock(): GrayBlock {
         return this.block as GrayBlock
     }
 

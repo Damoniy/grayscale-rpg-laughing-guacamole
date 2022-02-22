@@ -8,11 +8,11 @@ import net.minecraftforge.registries.IForgeRegistry
 
 object GeneralRegister {
 
-    fun registerBlocks(event: IForgeRegistry<Block>){
+    fun registerBlocks(event: IForgeRegistry<Block>) {
         GrayBlocks.get().forEach { block -> event.register(block); block.createItemFromBlock() }
     }
 
-    fun registerItems(event: IForgeRegistry<Item>){
+    fun registerItems(event: IForgeRegistry<Item>) {
         GrayItems.get().forEach { item -> event.register(item) }
     }
 }
