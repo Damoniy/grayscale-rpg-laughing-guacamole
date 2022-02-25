@@ -1,7 +1,7 @@
 package com.damoniy.grayscalerpg
 
 import com.damoniy.grayscalerpg.api.GeneralRegister
-import com.damoniy.grayscalerpg.api.data.client.GrayscaleBlockModelProvider
+import com.damoniy.grayscalerpg.api.data.client.ItemModelProvider
 import com.damoniy.grayscalerpg.api.data.client.GrayscaleBlockStateProvider
 import net.minecraft.block.Block
 import net.minecraft.item.Item
@@ -61,7 +61,7 @@ object GrayScaleRPG {
         fun gatherData(event: GatherDataEvent) {
             val eventGenerator = event.generator
             eventGenerator.addProvider(GrayscaleBlockStateProvider(eventGenerator, event.existingFileHelper))
-            eventGenerator.addProvider(GrayscaleBlockModelProvider(eventGenerator, event.existingFileHelper))
+            eventGenerator.addProvider(ItemModelProvider(eventGenerator, event.existingFileHelper))
         }
     }
 }

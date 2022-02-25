@@ -6,10 +6,11 @@ import net.minecraft.data.DataGenerator
 import net.minecraftforge.client.model.generators.ItemModelProvider
 import net.minecraftforge.common.data.ExistingFileHelper
 
-class GrayscaleBlockModelProvider(generator: DataGenerator, existingFileHelper: ExistingFileHelper): ItemModelProvider(generator, GrayScaleRPG.ID, existingFileHelper) {
+class ItemModelProvider(generator: DataGenerator, existingFileHelper: ExistingFileHelper): ItemModelProvider(generator, GrayScaleRPG.ID, existingFileHelper) {
 
     override fun registerModels() {
         withExistingParent("item_humus_dirt", modLoc("block/block_humus_dirt"))
         withExistingParent("item_black_wood_planks", modLoc("block/block_black_wood_planks"))
+        withExistingParent("item_lime_grass", modLoc("block/block_lime_grass"))
     }
 }
