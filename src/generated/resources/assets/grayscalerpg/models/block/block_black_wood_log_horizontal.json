@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "grayscalerpg:block/block_black_wood_log_side",
+    "end": "grayscalerpg:block/block_black_wood_log_end"
+  }
+}

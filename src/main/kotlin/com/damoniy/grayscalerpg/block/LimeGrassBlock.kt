@@ -1,7 +1,6 @@
 package com.damoniy.grayscalerpg.block
 
 import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
 import net.minecraft.block.IGrowable
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockReader
@@ -11,7 +10,7 @@ import net.minecraft.world.gen.feature.IFeatureConfig
 import net.minecraft.world.server.ServerWorld
 import java.util.*
 
-class BlockLimeGrass(type: BlockType, blockName: String) : GrayBlock(type, blockName), IGrowable {
+class LimeGrassBlock(type: BlockType, blockName: String) : SpreadableHumusSnowyDirtBlock(type, blockName), IGrowable {
     override fun isValidBonemealTarget(
         reader: IBlockReader,
         pos: BlockPos,
@@ -37,7 +36,7 @@ class BlockLimeGrass(type: BlockType, blockName: String) : GrayBlock(type, block
         blockState: BlockState,
     ) {
         val blockPos = blockPos.above()
-        val blockstate = Blocks.GRASS.defaultBlockState()
+        val blockState = GrayBlocks.LIME_GRASS.defaultBlockState()
         label48@ for (i in 0..127) {
             var blockpos1 = blockPos
             for (j in 0 until i / 16) {
@@ -51,8 +50,8 @@ class BlockLimeGrass(type: BlockType, blockName: String) : GrayBlock(type, block
                 }
             }
             val blockstate2 = worldServer.getBlockState(blockpos1)
-            if (blockstate2.`is`(blockstate.block) && random.nextInt(10) == 0) {
-                (blockstate.block as IGrowable).performBonemeal(worldServer, random, blockpos1, blockstate2)
+            if (blockstate2.`is`(blockState.block) && random.nextInt(10) == 0) {
+                (blockState.block as IGrowable).performBonemeal(worldServer, random, blockpos1, blockstate2)
             }
             if (blockstate2.isAir) {
                 var blockstate1: BlockState
@@ -65,7 +64,7 @@ class BlockLimeGrass(type: BlockType, blockName: String) : GrayBlock(type, block
                     val flowersFeature = configuredFeature.feature as FlowersFeature<IFeatureConfig>
                     flowersFeature.getRandomFlower(random, blockpos1, configuredFeature.config())
                 } else {
-                    blockstate
+                    blockState
                 }
                 if (blockstate1.canSurvive(worldServer, blockpos1)) {
                     worldServer.setBlock(blockpos1, blockstate1, 3)

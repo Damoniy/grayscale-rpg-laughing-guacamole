@@ -1,7 +1,5 @@
 package com.damoniy.grayscalerpg.block
 
-import net.minecraft.block.Blocks
-
 object GrayBlocks {
     private val blocks = ArrayList<GrayBlock>()
 
@@ -13,7 +11,9 @@ object GrayBlocks {
         return ArrayList(blocks)
     }
 
-    val humusDirt = HumusDirtBlock(BlockType.DIRT, "humus_dirt")
-    val purplePlanks = BlackWoodPlankBlock(BlockType.PLANKS, "black_wood_planks")
-    val limeGrass = BlockLimeGrass(BlockType.GRASS, "lime_grass")
+    val LIME_GRASS = LimeGrassBlock(BlockType.GRASS, "lime_grass")
+    val HUMUS_DIRT = HumusDirtBlock(BlockType.DIRT, "humus_dirt")
+
+    val PURPLE_PLANKS = BlockWoodPlanksBlock(BlockType.PLANKS, "black_wood_planks")
+    val BLACK_WOOD_LOG = BlackWoodLogBlock(BlockType.LOG, "black_wood_log")
 }

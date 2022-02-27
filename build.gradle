@@ -70,6 +70,7 @@ minecraft {
     }
 }
 
+
 // Include assets and data from data generators
 sourceSets.main.resources { srcDirs 'src/generated/resources/' }
 
